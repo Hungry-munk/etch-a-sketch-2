@@ -26,6 +26,18 @@ header {
     padding: 30px 0;
 }
 
+#grid-container {
+    width: 500px;
+    height: 500px;
+    background-color: white;
+
+    display: grid;
+}
+
+.cell {
+    border: 1px solid black;
+}
+
 footer {
     margin-top: auto;
     text-align: center;
