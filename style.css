@@ -26,6 +26,55 @@ header {
     padding: 30px 0;
 }
 
+main {
+    display: flex;
+    gap: 30px;
+
+    justify-content: center;
+    align-items: center;
+}
+/* settings stuff */
+#options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+#options-container button {
+    padding: 5px 5px;
+    border-radius: 10px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 15px;
+}
+.input-colour {
+    height: 50px;
+    width: 50px;
+    overflow:hidden ;
+    border-radius: 100%;
+
+
+}
+input[type=color] {
+    height: 100%;
+    width: 100%;
+    transform: scale(1.5);
+    box-shadow: 0px 3px 6px #0000001A;
+    border-radius: 50px;
+}    
+
+.bg-colour-container, .pen-colour-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+/* end of settings stuff */
+
+/* grid stuff */
 #grid-container {
     width: 500px;
     height: 500px;
@@ -43,6 +92,48 @@ header {
 .cell:hover{
     transform: scale(1.1);
 }
+
+
+
+/* range stuff */
+.range-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+input[type='range']{
+    height: 25px;
+    width:100%;
+    background-color: var(--creamy);
+    outline: none;
+    overflow: hidden;
+    cursor: ew-resize;
+    -webkit-appearance: none;
+}
+
+input[type='range']::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    background-color: black;
+    margin-top: -8px;
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+}
+
+input[type='range']::-webkit-slider-runnable-track{
+    -webkit-appearance: none;
+    background-color: white;
+    border: 1px solid;
+    border-radius: 50px;
+    height: 10px;
+}
+/* end of range stuff */
+
+
+
+/* end of grid stuff */
 
 footer {
     margin-top: auto;

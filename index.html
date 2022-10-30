@@ -16,13 +16,18 @@
         <div id="options-container">
 
             <div class="input-container">
-                <div>
-                    <input type="color" name="pen-color" id="pen-color">
+
+                <div class="pen-colour-container">
+                    <div class="input-colour">
+                        <input type="color" name="pen-color" id="pen-color">
+                    </div>
                     pen color
                 </div>
 
-                <div>
-                    <input type="color" name="background-color" id="background-color">
+                <div class= "bg-colour-container">
+                    <div class="input-colour">
+                        <input type="color" name="background-color" id="background-color" value="white">
+                    </div>
                     canvas color
                 </div>
             </div>
@@ -33,9 +38,14 @@
 
             <button class="eraser-btn">toggle eraser</button>
 
+            <div class="range-container">
+                <input type="range" value="16" min="2" max="100">
+                <div class="grid-size-text">16 X 16</div>
+            </div>
+
             <button class="clear-btn">clear canvas</button>
 
-            <buttonc class="show-grid-btn">toggle grid</button>
+            <button class="show-grid-btn">toggle grid</button>
 
 
 
