@@ -1,17 +1,10 @@
 const GRID_CONTAINER = document.getElementById('grid-container')
 
-let gridSize = 16
+const BACKGROUND_COLOR_PICKER = document.getElementById('background-color')
+const PEN_COLOR_PICKER = document.getElementById('pen-color')
+const GRID_SIZER = document.getElementById('grid-sizer')
 
-
-//used for centering the canvas
-// const MAINTAG = document.querySelector('main')
-// const FOOTER = document.querySelector('footer')
-// const HEADER = document.querySelector('header')
-// const BODY = document.querySelector('body')
-
-// function resizeMainHeight() {
-//     MAINTAG.style.height = BODY.offsetHeight - (FOOTER.offsetHeight + HEADER.offsetHeight)
-// }
+let grid_size = GRID_SIZER.value
 
 
 
@@ -21,13 +14,27 @@ function createGrid(gridSize) {
 
     for (i = 0; i < gridSize*gridSize; i++) {
         const cell = document.createElement('div')
-        cell.classList.add('cell')
+        cell.classList.add('cell', 'clean')
 
-        cell.addEventListener('click', changeCellBackgroundColor)
-        cell.addEventListener('mouseover',changeCellBackgroundColor)
+        cell.addEventListener('click', changeCellColor)
+        cell.addEventListener('mouseover',changeCellColor)
         GRID_CONTAINER.appendChild(cell)
 
     }
+}
+
+function changeCellColor (event) {
+    if (event.type === 'mouseover' && !mousedown) return
+
+    const cell = event.target
+    cell.style.background = 'orange'
+    
+}
+
+function changeGridColour(colour) {
+    GRID_CONTAINER.childNodes.forEach(cell => {
+        cell.style.backgroundColor = colour
+    })
 }
 
 //letting grid know when
@@ -36,13 +43,10 @@ GRID_CONTAINER.onmousedown = ()=> mousedown = true
 GRID_CONTAINER.onmouseup = ()=> mousedown = false
 GRID_CONTAINER.onmouseleave = ()=> mousedown = false
 
+BACKGROUND_COLOR_PICKER.oninput = ()=> changeGridColour(BACKGROUND_COLOR_PICKER.value)
 
-function changeCellBackgroundColor (event) {
-    if (event.type === 'mouseover' && !mousedown) return
 
-    const cell = event.target
-    cell.style.background = 'orange'
-    
-}
 
-createGrid(gridSize)
+
+
+createGrid(grid_size)
