@@ -10,6 +10,7 @@ function createGrid(gridSize) {
     for (i = 0; i < gridSize*gridSize; i++) {
         const cell = document.createElement('div')
         cell.classList.add('cell')
+        cell.setAttribute('draggable', false)
 
         cell.addEventListener('click', changeCellBackgroundColor)
         cell.addEventListener('mouseover',changeCellBackgroundColor)
@@ -18,9 +19,11 @@ function createGrid(gridSize) {
     }
 }
 
+//letting grid know when
 let mousedown = false
 gridContainer.onmousedown = ()=> mousedown = true
 gridContainer.onmouseup = ()=> mousedown = false
+gridContainer.onmouseleave = ()=> mousedown = false
 
 
 function changeCellBackgroundColor (event) {
