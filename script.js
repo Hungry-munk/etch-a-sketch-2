@@ -11,8 +11,10 @@ let penColour = PEN_COLOR_PICKER.value
 let gridColor = BACKGROUND_COLOR_PICKER.value
 
 // modes
-let eraser = true,
-    rainbow = true
+let eraser = true
+let rainbow = true
+let dark = false
+
 
 
 function createGrid(gridSize) {
@@ -36,8 +38,10 @@ function changeCellColor (event) {
     if (event.type === 'mouseover' && !mousedown) return
 
     const cell = event.target
-    cell.style.backgroundColor = penColour 
     cell.classList.remove('clean')
+
+    cell.style.backgroundColor = rainbow ?  
+        randomColour() : penColour
 }
 
 function changeGridColour() {
@@ -54,6 +58,10 @@ function updateSizerText () {
 function removeCanvas(){
     GRID_CONTAINER.innerHTML = ''
 }
+
+function randomColour(){
+    return '#' + Math.floor(Math.random()*16777215).toString(16);
+};
 
 //letting grid know when
 let mousedown = false
