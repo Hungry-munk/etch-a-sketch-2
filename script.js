@@ -55,11 +55,15 @@ function changeCellColor (event) {
         cell.style.backgroundColor = gridColor
         return
     }
-
     cell.classList.remove('clean')
 
-    cell.style.backgroundColor = rainbow ?  
-        randomColour() : penColour
+    console.log(cell.style.backgroundColor)
+
+    let cellColour;
+    if (rainbow) cellColour = randomColour()
+    else if (dark) cellColour = makeDarker(cell.style.backgroundColor)
+    else cellColour = penColour
+    cell.style.backgroundColor = cellColour
 }
 
 function changeGridColour() {
@@ -75,6 +79,18 @@ function updateSizerText () {
  
 function removeCanvas(){
     GRID_CONTAINER.innerHTML = ''
+}
+
+function makeDarker(colour) {
+    colour = colour.slice(4)
+    colour = colour.slice(0,-1)
+    let currentValues = colour.split(',')
+
+    let darkerValues = []
+    currentValues.forEach(value=>
+        darkerValues.push(parseInt(value) - (parseInt(value) / 10))) //minusing 10 percent to make it darker
+
+    return `rgb(${darkerValues[0]}, ${darkerValues[1]}, ${darkerValues[2]})`
 }
 
 function randomColour(){
@@ -144,6 +160,21 @@ TOGGLE_ERASER.addEventListener('click', ()=>{
         TOGGLE_DARK.classList.remove('on')
     }
 })
+
+TOGGLE_DARK.addEventListener('click', ()=>{
+    if (dark) {
+        dark = true
+        TOGGLE_DARK.classList.remove('on')
+    } else {
+        dark = true
+        eraser = false
+        rainbow = false
+        TOGGLE_DARK.classList.add('on')
+        TOGGLE_ERASER.classList.remove('on')
+        TOGGLE_RAINBOW.classList.remove('on')
+    }
+})
+
 
 
 
