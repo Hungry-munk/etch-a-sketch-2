@@ -1,10 +1,20 @@
 const GRID_CONTAINER = document.getElementById('grid-container')
 
+// input fields
 const BACKGROUND_COLOR_PICKER = document.getElementById('background-color')
 const PEN_COLOR_PICKER = document.getElementById('pen-color')
 const GRID_SIZER = document.getElementById('grid-sizer')
 
 const SIZER_TEXT = document.querySelector('.grid-size-text')
+
+// buttons
+const TOGGLE_RAINBOW = document.querySelector('.rainbow-btn')
+const TOGGLE_DARK = document.querySelector('.darker-btn')
+const TOGGLE_ERASER = document.querySelector('.eraser-btn')
+const TOGGLE_GRID = document.querySelector('.show-grid-btn')
+const CLEAR_CANVAS = document.querySelector('.clear-btn')
+
+
 
 let gridSize = GRID_SIZER.value
 let penColour = PEN_COLOR_PICKER.value
@@ -66,15 +76,15 @@ function randomColour(){
 
 function toggleGrid() {
     if (!grid){
-        GRID_CONTAINER.childNodes.forEach(cell => {
-            cell.classList.add('cell-border')
-        })
+        GRID_CONTAINER.childNodes.forEach(cell => 
+            cell.classList.add('cell-border'))
         grid = true
+        TOGGLE_GRID.classList.add('on')
     } else {
-        GRID_CONTAINER.childNodes.forEach(cell => {
-            cell.classList.remove('cell-border')
-        })
+        GRID_CONTAINER.childNodes.forEach(cell => 
+            cell.classList.remove('cell-border'))
         grid = false
+        TOGGLE_GRID.classList.remove('on')
     }
 }
 
@@ -98,6 +108,8 @@ GRID_SIZER.oninput = ()=> {
     createGrid(gridSize)
     updateSizerText()
 }
+
+TOGGLE_GRID.addEventListener('click', toggleGrid)
 
 
 

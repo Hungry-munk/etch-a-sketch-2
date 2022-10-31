@@ -5,7 +5,8 @@
 }
 
 :root {
-    --creamy : #f7e7ba;
+    --menu:#204a99;
+    --background:#4b77b8;
 }
 
 html {
@@ -17,7 +18,8 @@ body {
     display: flex;
     flex-direction: column;
     font-family: sans-serif;
-    background-color: var(--creamy);
+    background-color: var(--background);
+    
 }
 
 header {
@@ -37,12 +39,23 @@ main {
 #options-container {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 20px;
+    padding: 27px;
+    background-color: var(--menu);
+    box-shadow:0.5em 0.5em 2em , -1px -1px 15px
 }
 
-#options-container button {
+ button {
     padding: 5px 5px;
     border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: var(--menu);
+}
+
+button.on {
+    background-color: black;
+    color: var(--menu);
 }
 
 .input-container {
@@ -51,14 +64,14 @@ main {
     gap: 15px;
     font-size: 15px;
 }
+
 .input-colour {
     height: 50px;
     width: 50px;
     overflow:hidden ;
     border-radius: 100%;
-
-
 }
+
 input[type=color] {
     height: 100%;
     width: 100%;
@@ -72,6 +85,8 @@ input[type=color] {
     align-items: center;
     gap: 5px;
 }
+
+
 /* end of settings stuff */
 
 /* grid stuff */
@@ -79,7 +94,7 @@ input[type=color] {
     width: 500px;
     height: 500px;
     background-color: white;
-
+    box-shadow:0.8em 0.8em 2em , -0.1em -0.1em 2em; 
     display: grid;
 }
 
@@ -109,7 +124,7 @@ input[type=color] {
 input[type='range']{
     height: 25px;
     width:100%;
-    background-color: var(--creamy);
+    background-color: var(--menu);
     outline: none;
     overflow: hidden;
     cursor: ew-resize;
