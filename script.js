@@ -42,6 +42,10 @@ function createGrid(gridSize) {
 
         GRID_CONTAINER.appendChild(cell)
 
+        if (grid){
+            toggleGrid()
+        }
+
     }
 }
 
@@ -173,6 +177,11 @@ TOGGLE_DARK.addEventListener('click', ()=>{
         TOGGLE_ERASER.classList.remove('on')
         TOGGLE_RAINBOW.classList.remove('on')
     }
+})
+
+CLEAR_CANVAS.addEventListener('click', ()=>{
+    removeCanvas()
+    createGrid(gridSize)
 })
 
 
