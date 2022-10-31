@@ -19,6 +19,7 @@ body {
     flex-direction: column;
     font-family: sans-serif;
     background-color: var(--background);
+    justify-content: space-between;
     
 }
 
@@ -53,6 +54,10 @@ main {
     background-color: var(--menu);
 }
 
+button:hover {
+    cursor: pointer;
+}
+
 button.on {
     background-color: black;
     color: var(--menu);
@@ -80,6 +85,10 @@ input[type=color] {
     border-radius: 50px;
 }    
 
+input[type=color]:hover {
+    cursor: pointer;
+}
+
 .bg-colour-container, .pen-colour-container {
     display: flex;
     align-items: center;
@@ -100,6 +109,9 @@ input[type=color] {
 
 .cell {
     cursor: pointer;
+    transition: 0.1s ease-in-out;
+    -webkit-user-drag: none;
+    user-select: none;
 }
 
 .cell-border {
@@ -154,7 +166,7 @@ input[type='range']::-webkit-slider-runnable-track{
 /* end of grid stuff */
 
 footer {
-    margin-top: auto;
+    /* margin-top: auto; */
     text-align: center;
     padding: 15px;
 }

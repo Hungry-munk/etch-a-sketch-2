@@ -21,7 +21,7 @@ let penColour = PEN_COLOR_PICKER.value
 let gridColor = BACKGROUND_COLOR_PICKER.value
 
 // modes
-let eraser = true
+let eraser = false
 let rainbow = false
 let dark = false
 let grid = false
@@ -49,6 +49,13 @@ function changeCellColor (event) {
     if (event.type === 'mouseover' && !mousedown) return
 
     const cell = event.target
+
+    if (eraser) {
+        cell.classList.add('clean')
+        cell.style.backgroundColor = gridColor
+        return
+    }
+
     cell.classList.remove('clean')
 
     cell.style.backgroundColor = rainbow ?  
@@ -92,7 +99,7 @@ function toggleGrid() {
 let mousedown = false
 GRID_CONTAINER.onmousedown = ()=> mousedown = true
 GRID_CONTAINER.onmouseup = ()=> mousedown = false
-// GRID_CONTAINER.onmouseleave = ()=> mousedown = false //a little buggy
+GRID_CONTAINER.onmouseleave = ()=> mousedown = false //a little buggy
 
 // event listeners
 
@@ -110,6 +117,33 @@ GRID_SIZER.oninput = ()=> {
 }
 
 TOGGLE_GRID.addEventListener('click', toggleGrid)
+TOGGLE_RAINBOW.addEventListener('click', ()=>{
+    if (rainbow) {
+        rainbow = false
+        TOGGLE_RAINBOW.classList.remove('on')
+    } else {
+        rainbow = true
+        dark = false
+        eraser = false
+        TOGGLE_RAINBOW.classList.add('on')
+        TOGGLE_DARK.classList.remove('on')
+        TOGGLE_ERASER.classList.remove('on')
+    }
+})
+
+TOGGLE_ERASER.addEventListener('click', ()=>{
+    if (eraser) {
+        eraser = false
+        TOGGLE_ERASER.classList.remove('on')
+    } else {
+        eraser = true
+        rainbow = false
+        dark = false
+        TOGGLE_ERASER.classList.add('on')
+        TOGGLE_RAINBOW.classList.remove('on')
+        TOGGLE_DARK.classList.remove('on')
+    }
+})
 
 
 
