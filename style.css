@@ -84,9 +84,12 @@ input[type=color] {
 }
 
 .cell {
-    border: 1px solid black;
     cursor: pointer;
-  
+}
+
+.cell-border {
+    border: 1px solid gray;
+
 }
 
 .cell:hover{

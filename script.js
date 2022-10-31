@@ -12,8 +12,9 @@ let gridColor = BACKGROUND_COLOR_PICKER.value
 
 // modes
 let eraser = true
-let rainbow = true
+let rainbow = false
 let dark = false
+let grid = false
 
 
 
@@ -63,16 +64,33 @@ function randomColour(){
     return '#' + Math.floor(Math.random()*16777215).toString(16);
 };
 
+function toggleGrid() {
+    if (!grid){
+        GRID_CONTAINER.childNodes.forEach(cell => {
+            cell.classList.add('cell-border')
+        })
+        grid = true
+    } else {
+        GRID_CONTAINER.childNodes.forEach(cell => {
+            cell.classList.remove('cell-border')
+        })
+        grid = false
+    }
+}
+
 //letting grid know when
 let mousedown = false
 GRID_CONTAINER.onmousedown = ()=> mousedown = true
 GRID_CONTAINER.onmouseup = ()=> mousedown = false
-GRID_CONTAINER.onmouseleave = ()=> mousedown = false
+// GRID_CONTAINER.onmouseleave = ()=> mousedown = false //a little buggy
+
+// event listeners
 
 BACKGROUND_COLOR_PICKER.oninput = ()=> {
     gridColor = BACKGROUND_COLOR_PICKER.value
     changeGridColour()
 }
+
 PEN_COLOR_PICKER.oninput = ()=> penColour = PEN_COLOR_PICKER.value
 GRID_SIZER.oninput = ()=> {
     gridSize = GRID_SIZER.value
